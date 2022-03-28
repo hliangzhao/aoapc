@@ -129,29 +129,29 @@ aoapc/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/aoapc.dir/build.make CMakeFiles/aoapc.dir/build
 .PHONY : aoapc/fast
 
-p2-2.o: p2-2.cpp.o
-.PHONY : p2-2.o
+p2-6.o: p2-6.cpp.o
+.PHONY : p2-6.o
 
 # target to build an object file
-p2-2.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/aoapc.dir/build.make CMakeFiles/aoapc.dir/p2-2.cpp.o
-.PHONY : p2-2.cpp.o
+p2-6.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aoapc.dir/build.make CMakeFiles/aoapc.dir/p2-6.cpp.o
+.PHONY : p2-6.cpp.o
 
-p2-2.i: p2-2.cpp.i
-.PHONY : p2-2.i
+p2-6.i: p2-6.cpp.i
+.PHONY : p2-6.i
 
 # target to preprocess a source file
-p2-2.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/aoapc.dir/build.make CMakeFiles/aoapc.dir/p2-2.cpp.i
-.PHONY : p2-2.cpp.i
+p2-6.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aoapc.dir/build.make CMakeFiles/aoapc.dir/p2-6.cpp.i
+.PHONY : p2-6.cpp.i
 
-p2-2.s: p2-2.cpp.s
-.PHONY : p2-2.s
+p2-6.s: p2-6.cpp.s
+.PHONY : p2-6.s
 
 # target to generate assembly for a file
-p2-2.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/aoapc.dir/build.make CMakeFiles/aoapc.dir/p2-2.cpp.s
-.PHONY : p2-2.cpp.s
+p2-6.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aoapc.dir/build.make CMakeFiles/aoapc.dir/p2-6.cpp.s
+.PHONY : p2-6.cpp.s
 
 # Help Target
 help:
@@ -162,9 +162,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... aoapc"
-	@echo "... p2-2.o"
-	@echo "... p2-2.i"
-	@echo "... p2-2.s"
+	@echo "... p2-6.o"
+	@echo "... p2-6.i"
+	@echo "... p2-6.s"
 .PHONY : help
 
 
