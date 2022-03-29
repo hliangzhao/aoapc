@@ -3,4 +3,4 @@ project(aoapc)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(aoapc p2-6.cpp)
+add_executable(aoapc e3-6.cpp)

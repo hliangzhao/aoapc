@@ -42,4 +42,60 @@
       // do sth.
   }
   ```
-  
+* 比较大的数组应当申明在函数外（堆而非栈上）：
+  ```C++
+  #define SIZE 105
+  int c31_arr[SIZE];
+  ```
+* 使用`first`消除最后一个元素打印时的空格：
+  ```C++
+  int first = 1;
+    for (int i = 1; i <= n; i++) {
+        // TODO: 使用first消除最后一个元素的空格
+        if (c32_arr[i] == 1) {
+            if (first) {
+                printf("%d", i);
+                first = 0;
+            } else {
+                printf(" %d", i);
+            }
+        }
+    }
+  ```
+* 使用`memset`设置数组元素的统一初值：
+  ```C++
+  memset(arr, 0, sizeof(arr));
+  ```
+* 使用`scanf`直接将文本读入字符数组中。`scanf`遇到空白字符（空格、Tab等）就会停下来：
+  ```C++
+  char s[20];
+  scanf("%s", s);
+  ```
+* 使用`sprintf`直接将变量的字面量作为字符写入字符数组中：
+  ```C++
+  // 当五个int变量的值分别为12、13、5、17、90时，
+  // buf为"121351790"
+  sprintf(buf, "%d%d%d%d%d", abc, de, x, y, z);
+  ```
+* 使用`strlen`返回字符结束标记`\0`之前的字符个数。
+* 使用`strchr`检查每个字符是否在字符串内：
+  ```C++
+  int ok = 1;
+  for (int i = 0; i < strlen(buf); i++) {
+      if (strchr(s, buf[i]) == NULL) {
+          ok = 0;
+      }
+  }
+  ```
+* 关于字符读取的一些梳理：
+
+   + 使用`scanf("%s", s)`可以读取一个字符串，但是它遇到空白字符就会停下；
+
+   + 使用`fgetc(fin)`从输入流中读取一个字符。`fgetc`返回的其实是`int`变量，需要转换为`char`变量。
+   `fgetc`在流的末尾会读取到一个特殊标记`EOF`。
+   
+   + 从标准输入流中读取一个字符，可以用`getchar()`，他等价于`fgetc(stdin)`。
+   
+   + 使用`fgets(buf, maxn, fin)`从`fin`中读取不超过`maxn-1`个字符，然后在末尾添加上`\0`。
+   使用`fgets`可以读取完整的一行，这是因为它一旦读取到回车符，就会将`\n`作为最后一个有效字符。
+* `type.h`提供了函数`isalpha()`, `isdigit()`, `isprint()`, `toupper()`, `tolower()`等。在合适的地方使用它们。
