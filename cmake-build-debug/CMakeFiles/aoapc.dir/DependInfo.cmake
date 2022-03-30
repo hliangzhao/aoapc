@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/hliangzhao/Documents/GitHub/aoapc/p3-7.cpp" "/Users/hliangzhao/Documents/GitHub/aoapc/cmake-build-debug/CMakeFiles/aoapc.dir/p3-7.cpp.o"
+  "/Users/hliangzhao/Documents/GitHub/aoapc/p3-12.cpp" "/Users/hliangzhao/Documents/GitHub/aoapc/cmake-build-debug/CMakeFiles/aoapc.dir/p3-12.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
