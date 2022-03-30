@@ -11,7 +11,7 @@
 int result[SIZE], guess[SIZE], matched[SIZE], used[SIZE];
 
 int main() {
-    #ifdef LOCAL
+#ifdef LOCAL
     freopen("../e3-4-data.in", "r", stdin);
 #endif
     int n, kase = 0;
