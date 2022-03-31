@@ -5,7 +5,7 @@
 
 ### 题解编号
 
-所有题解均已`[cep]-chapter_num-problem_num.cpp`的方式命名。
+所有题解均以`[cep]-chapter_num-problem_num.cpp`的方式命名。
 其中`p`表示practice，指代每一章节的习题。例如，`p3-6.cpp`是原书习题3-6（Crossword Answers, ACM/ICPC World Finals 1994）。
 `e`表示example，指代每一章节的习题。`c`指代每章非例题部分的案例。
 例如，`c3-3.cpp`是原书第40页的"蛇形填数"。
@@ -110,3 +110,5 @@
    + 使用`fgets(buf, maxn, fin)`从`fin`中读取不超过`maxn-1`个字符，然后在末尾添加上`\0`。
    使用`fgets`可以读取完整的一行，这是因为它一旦读取到回车符，就会将`\n`作为最后一个有效字符。
 * `type.h`提供了函数`isalpha()`, `isdigit()`, `isprint()`, `toupper()`, `tolower()`等。在合适的地方使用它们。
+* 当题目给定了结果的范围，这时可以通过先计算后查表的方式求解（参见`p3-12`）。
+* 掌握`sscanf`的使用。这个函数从一个字符串中按照类似正则表达式匹配的方式读取到我们想要的变量值（参见`p3-12`。
