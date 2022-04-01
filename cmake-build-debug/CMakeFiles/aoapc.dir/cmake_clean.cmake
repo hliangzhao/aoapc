@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/aoapc.dir/p3-12.cpp.o"
+  "CMakeFiles/aoapc.dir/e4-4-2.cpp.o"
   "aoapc"
   "aoapc.pdb"
 )
