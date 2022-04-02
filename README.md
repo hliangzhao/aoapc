@@ -7,7 +7,7 @@
 
 所有题解均以`[cep]-chapter_num-problem_num.cpp`的方式命名。
 其中`p`表示practice，指代每一章节的习题。例如，`p3-6.cpp`是原书习题3-6（Crossword Answers, ACM/ICPC World Finals 1994）。
-`e`表示example，指代每一章节的习题。`e4_5_c`指代每章非例题部分的案例。
+`e`表示example，指代每一章节的习题。`c`指代每章非例题部分的案例。
 例如，`c3-3.cpp`是原书第40页的"蛇形填数"。
 
 全部题解均是自己独立思考后给出，除非不会做。
@@ -21,20 +21,20 @@
   ```C++
   int m = floor(sqrt(s) + 0.5);
   if (m*m == s) {
-      printf("%e4_5_d\e4_5_n", s);
+      printf("%d\n", s);
   }
   ```
 * 保证数字运算不溢出，使用`long long`存储数据：
   ```C++
-  scanf("%e4_5_d", &e4_5_n);
-  long long n2 = e4_5_n; 
+  scanf("%d", &n);
+  long long n2 = n; 
   ```
 * 善用条件编译指令`#ifdef`和输入输出重定向：
   ```C++
   #define LOCAL
   #ifdef LOCAL
       // TODO: 将stdin和stdout重定向为文件
-      freopen("../e2-5-data.in", "e4_5_r", stdin);
+      freopen("../e2-5-data.in", "r", stdin);
       freopen("../e2-5-data.out", "w", stdout);
   #endif
   ```
@@ -50,26 +50,26 @@
 * 读取不给定输入个数的多个输入：
   ```C++
   int e4_5_n;
-  while (scanf("%e4_5_d", &e4_5_n) == 1) {
+  while (scanf("%d", &n) == 1) {
       // do sth.
   }
   ```
 * 比较大的数组应当申明在函数外（堆而非栈上）：
   ```C++
   #define SIZE 105
-  int c31_arr[SIZE];
+  int arr[SIZE];
   ```
 * 使用`first`消除最后一个元素打印时的空格：
   ```C++
   int first = 1;
-    for (int i = 1; i <= e4_5_n; i++) {
+    for (int i = 1; i <= n; i++) {
         // TODO: 使用first消除最后一个元素的空格
-        if (c32_arr[i] == 1) {
+        if (arr[i] == 1) {
             if (first) {
-                printf("%e4_5_d", i);
+                printf("%d", i);
                 first = 0;
             } else {
-                printf(" %e4_5_d", i);
+                printf(" %d", i);
             }
         }
     }
@@ -87,7 +87,7 @@
   ```C++
   // 当五个int变量的值分别为12、13、5、17、90时，
   // buf为"121351790"
-  sprintf(buf, "%e4_5_d%e4_5_d%e4_5_d%e4_5_d%e4_5_d", abc, de, x, y, z);
+  sprintf(buf, "%d%d%d%d%d", abc, de, x, y, z);
   ```
 * 使用`strlen`返回字符结束标记`\0`之前的字符个数。
 * 使用`strchr`检查每个字符是否在字符串内：
