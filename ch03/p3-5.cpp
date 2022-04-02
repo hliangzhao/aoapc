@@ -15,7 +15,7 @@ void illegal() {
 
 int main() {
 #ifdef LOCAL
-    freopen("../p3-5-data.in", "r", stdin);
+    freopen("../ch03/p3-5-data.in", "r", stdin);
 #endif
     // TODO: 这里如果不将maxn申明为const，二维数组申明会报错！
     const int maxn = 5, config_len = 80;

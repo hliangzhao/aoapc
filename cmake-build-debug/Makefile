@@ -129,29 +129,29 @@ aoapc/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/aoapc.dir/build.make CMakeFiles/aoapc.dir/build
 .PHONY : aoapc/fast
 
-e4-4-2.o: e4-4-2.cpp.o
-.PHONY : e4-4-2.o
+ch04/e4-6.o: ch04/e4-6.cpp.o
+.PHONY : ch04/e4-6.o
 
 # target to build an object file
-e4-4-2.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/aoapc.dir/build.make CMakeFiles/aoapc.dir/e4-4-2.cpp.o
-.PHONY : e4-4-2.cpp.o
+ch04/e4-6.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aoapc.dir/build.make CMakeFiles/aoapc.dir/ch04/e4-6.cpp.o
+.PHONY : ch04/e4-6.cpp.o
 
-e4-4-2.i: e4-4-2.cpp.i
-.PHONY : e4-4-2.i
+ch04/e4-6.i: ch04/e4-6.cpp.i
+.PHONY : ch04/e4-6.i
 
 # target to preprocess a source file
-e4-4-2.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/aoapc.dir/build.make CMakeFiles/aoapc.dir/e4-4-2.cpp.i
-.PHONY : e4-4-2.cpp.i
+ch04/e4-6.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aoapc.dir/build.make CMakeFiles/aoapc.dir/ch04/e4-6.cpp.i
+.PHONY : ch04/e4-6.cpp.i
 
-e4-4-2.s: e4-4-2.cpp.s
-.PHONY : e4-4-2.s
+ch04/e4-6.s: ch04/e4-6.cpp.s
+.PHONY : ch04/e4-6.s
 
 # target to generate assembly for a file
-e4-4-2.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/aoapc.dir/build.make CMakeFiles/aoapc.dir/e4-4-2.cpp.s
-.PHONY : e4-4-2.cpp.s
+ch04/e4-6.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aoapc.dir/build.make CMakeFiles/aoapc.dir/ch04/e4-6.cpp.s
+.PHONY : ch04/e4-6.cpp.s
 
 # Help Target
 help:
@@ -162,9 +162,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... aoapc"
-	@echo "... e4-4-2.o"
-	@echo "... e4-4-2.i"
-	@echo "... e4-4-2.s"
+	@echo "... ch04/e4-6.o"
+	@echo "... ch04/e4-6.i"
+	@echo "... ch04/e4-6.s"
 .PHONY : help
 
 

@@ -8,7 +8,7 @@
 
 int main() {
 #ifdef LOCAL
-    freopen("../e4-3-data.in", "r", stdin);
+    freopen("../ch04/e4-3-data.in", "r", stdin);
 #endif
     int n, k, m, arr[25];
     while (scanf("%d%d%d", &n, &k, &m) && n) {

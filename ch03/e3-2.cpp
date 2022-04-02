@@ -28,7 +28,7 @@ void method1() {
 
 void method2() {
 #ifdef LOCAL
-    freopen("../e3-2-data.in", "r", stdin);
+    freopen("../ch03/e3-2-data.in", "r", stdin);
 #endif
     int i, c;
     while ((c = getchar()) != EOF) {

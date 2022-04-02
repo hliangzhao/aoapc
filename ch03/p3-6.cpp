@@ -29,7 +29,7 @@ bool is_start(int i, int j, int r, int c, char grid[max_r][max_c]) {
 
 int main() {
 #ifdef LOCAL
-    freopen("../p3-6-data.in", "r", stdin);
+    freopen("../ch03/p3-6-data.in", "r", stdin);
 #endif
     char grid[max_r][max_c];
     char across_words[max_words_num][max_c], down_words[max_words_num][max_r];

@@ -12,7 +12,7 @@ int result[SIZE], guess[SIZE], matched[SIZE], used[SIZE];
 
 int main() {
 #ifdef LOCAL
-    freopen("../e3-4-data.in", "r", stdin);
+    freopen("../ch03/e3-4-data.in", "r", stdin);
 #endif
     int n, kase = 0;
     while (scanf("%d", &n) == 1 && n) {

@@ -91,7 +91,7 @@ void method2() {
 
 int main() {
 #ifdef LOCAL
-    freopen("../e3-3-data.in", "r", stdin);
+    freopen("../ch03/e3-3-data.in", "r", stdin);
 #endif
     method2();
     return 0;

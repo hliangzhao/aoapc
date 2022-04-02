@@ -126,7 +126,7 @@ void book_method() {
 
 int main() {
 #ifdef LOCAL
-    freopen("../e4-2-data.in", "r", stdin);
+    freopen("../ch04/e4-2-data.in", "r", stdin);
 #endif
     book_method();
     return 0;

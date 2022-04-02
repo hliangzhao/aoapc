@@ -49,7 +49,7 @@ int read_codes() {
 
 int main() {
 #ifdef LOCAL
-    freopen("../e4-4-data.in", "r", stdin);
+    freopen("../ch04/e4-4-data.in", "r", stdin);
 #endif
     while (read_codes()) {
         for (;;) {

@@ -22,7 +22,7 @@ void test_fgets();
 
 int main() {
 #ifdef LOCAL
-    freopen("../e3-1-data.in", "r", stdin);
+    freopen("../ch03/e3-1-data.in", "r", stdin);
 #endif
     char c;
     int sign = 1;

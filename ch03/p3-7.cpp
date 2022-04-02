@@ -14,7 +14,7 @@ char p3_7_s[max_m][max_n];
 
 int main() {
 #ifdef LOCAL
-    freopen("../p3-7-data.in", "r", stdin);
+    freopen("../ch03/p3-7-data.in", "r", stdin);
 #endif
     int m, n;
     scanf("%d %d", &m, &n);

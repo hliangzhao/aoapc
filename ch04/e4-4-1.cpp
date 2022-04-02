@@ -32,7 +32,7 @@ void set_codes() {
 
 int main() {
 #ifdef LOCAL
-    freopen("../e4-4-data.in", "r", stdin);
+    freopen("../ch04/e4-4-data.in", "r", stdin);
 #endif
     memset(content, '\0', sizeof(content));
     scanf("%s", head);

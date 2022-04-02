@@ -11,8 +11,8 @@ void method1() {
     // TODO: 使用文件重定向
 #ifdef LOCAL
     // TODO: 将stdin和stdout重定向为文件
-    freopen("../e2-5-data.in", "r", stdin);
-    freopen("../e2-5-data.out", "w", stdout);
+    freopen("../ch02/e2-5-data.in", "r", stdin);
+    freopen("../ch02/e2-5-data.out", "w", stdout);
 #endif
     int x, n = 0, min = INF, max = -INF, sum = 0;
     // TODO: 读取多个输入的方法。scanf函数返回的是成功输入的变量的个数
@@ -32,8 +32,8 @@ void method1() {
 void method2() {
     // TODO: 使用文件流（注意，以binary的方式读取）
     FILE *fin, *fout;
-    fin = fopen("../e2-5-data.in", "rb");
-    fout = fopen("../e2-5-data.out", "wb");
+    fin = fopen("../ch02/e2-5-data.in", "rb");
+    fout = fopen("../ch02/e2-5-data.out", "wb");
     int x, n = 0, min = INF, max = -INF, sum = 0;
     // TODO: 读取多个输入的方法。scanf函数返回的是成功输入的变量的个数
     while (fscanf(fin, "%d", &x) == 1) {

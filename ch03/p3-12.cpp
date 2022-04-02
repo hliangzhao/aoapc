@@ -31,7 +31,7 @@ void calculate() {
 
 int main() {
 #ifdef LOCAL
-    freopen("../p3-12-data.in", "r", stdin);
+    freopen("../ch03/p3-12-data.in", "r", stdin);
 #endif
     calculate();
     double A, val;

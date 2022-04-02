@@ -7,7 +7,7 @@
 
 所有题解均以`[cep]-chapter_num-problem_num.cpp`的方式命名。
 其中`p`表示practice，指代每一章节的习题。例如，`p3-6.cpp`是原书习题3-6（Crossword Answers, ACM/ICPC World Finals 1994）。
-`e`表示example，指代每一章节的习题。`c`指代每章非例题部分的案例。
+`e`表示example，指代每一章节的习题。`e4_5_c`指代每章非例题部分的案例。
 例如，`c3-3.cpp`是原书第40页的"蛇形填数"。
 
 全部题解均是自己独立思考后给出，除非不会做。
@@ -21,20 +21,20 @@
   ```C++
   int m = floor(sqrt(s) + 0.5);
   if (m*m == s) {
-      printf("%d\n", s);
+      printf("%e4_5_d\e4_5_n", s);
   }
   ```
 * 保证数字运算不溢出，使用`long long`存储数据：
   ```C++
-  scanf("%d", &n);
-  long long n2 = n; 
+  scanf("%e4_5_d", &e4_5_n);
+  long long n2 = e4_5_n; 
   ```
 * 善用条件编译指令`#ifdef`和输入输出重定向：
   ```C++
   #define LOCAL
   #ifdef LOCAL
       // TODO: 将stdin和stdout重定向为文件
-      freopen("../e2-5-data.in", "r", stdin);
+      freopen("../e2-5-data.in", "e4_5_r", stdin);
       freopen("../e2-5-data.out", "w", stdout);
   #endif
   ```
@@ -49,8 +49,8 @@
   ```
 * 读取不给定输入个数的多个输入：
   ```C++
-  int n;
-  while (scanf("%d", &n) == 1) {
+  int e4_5_n;
+  while (scanf("%e4_5_d", &e4_5_n) == 1) {
       // do sth.
   }
   ```
@@ -62,14 +62,14 @@
 * 使用`first`消除最后一个元素打印时的空格：
   ```C++
   int first = 1;
-    for (int i = 1; i <= n; i++) {
+    for (int i = 1; i <= e4_5_n; i++) {
         // TODO: 使用first消除最后一个元素的空格
         if (c32_arr[i] == 1) {
             if (first) {
-                printf("%d", i);
+                printf("%e4_5_d", i);
                 first = 0;
             } else {
-                printf(" %d", i);
+                printf(" %e4_5_d", i);
             }
         }
     }
@@ -87,7 +87,7 @@
   ```C++
   // 当五个int变量的值分别为12、13、5、17、90时，
   // buf为"121351790"
-  sprintf(buf, "%d%d%d%d%d", abc, de, x, y, z);
+  sprintf(buf, "%e4_5_d%e4_5_d%e4_5_d%e4_5_d%e4_5_d", abc, de, x, y, z);
   ```
 * 使用`strlen`返回字符结束标记`\0`之前的字符个数。
 * 使用`strchr`检查每个字符是否在字符串内：
@@ -109,7 +109,7 @@
    + 从标准输入流中读取一个字符，可以用`getchar()`，他等价于`fgetc(stdin)`。
    
    + 使用`fgets(buf, maxn, fin)`从`fin`中读取不超过`maxn-1`个字符，然后在末尾添加上`\0`。
-   使用`fgets`可以读取完整的一行，这是因为它一旦读取到回车符，就会将`\n`作为最后一个有效字符。
+   使用`fgets`可以读取完整的一行，这是因为它一旦读取到回车符，就会将`\e4_5_n`作为最后一个有效字符。
 * `type.h`提供了函数`isalpha()`, `isdigit()`, `isprint()`, `toupper()`, `tolower()`等。在合适的地方使用它们。
 * 当题目给定了结果的范围，这时可以通过先计算后查表的方式求解（参见`p3-12`）。
 * 掌握`sscanf`的使用。这个函数从一个字符串中按照类似正则表达式匹配的方式读取到我们想要的变量值（参见`p3-12`）。

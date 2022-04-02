@@ -6,13 +6,13 @@
 
 #include <cstdio>
 
-//#define LOCAL
+#define LOCAL
 
 int main() {
     int a, b, c, kase = 1;
 #ifdef LOCAL
-    freopen("../p2-2-data.in", "r", stdin);
-    freopen("../p2-2-data.out", "w", stdout);
+    freopen("../ch02/p2-2-data.in", "r", stdin);
+    freopen("../ch02/p2-2-data.out", "w", stdout);
 #endif
     while (scanf("%d", &a) == 1) {
         bool found = false;
