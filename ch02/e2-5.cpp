@@ -35,7 +35,7 @@ void method2() {
     fin = fopen("../ch02/e2-5-data.in", "rb");
     fout = fopen("../ch02/e2-5-data.out", "wb");
     int x, n = 0, min = INF, max = -INF, sum = 0;
-    // TODO: 读取多个输入的方法。scanf函数返回的是成功输入的变量的个数
+    // TODO: 读取多个输入的方法。fscanf函数返回的是成功输入的变量的个数
     while (fscanf(fin, "%d", &x) == 1) {
         sum += x;
         n++;

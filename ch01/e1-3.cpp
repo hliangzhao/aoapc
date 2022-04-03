@@ -17,7 +17,7 @@ void method1() {
 void method2() {
     int a, b;
     scanf("%d %d", &a, &b);
-    printf("%d %d\n", b, a);   // TODO: 打印满足要求的输出（解决问题）最重要
+    printf("%d %d\n", b, a);   // TODO: 打印满足要求的输出。解决问题最重要
 }
 
 int main() {

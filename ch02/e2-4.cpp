@@ -12,7 +12,7 @@ int main() {
     scanf("%d", &n);
     int tmp = 1;
     for (int i = 2; i <= n; i++) {
-        // TODO: 在每一步计算之后就取，就可以利用"25末尾有6个零"这个结论！
+        // TODO: 在每一步计算之后就取模，就可以利用"25末尾有6个零"这个结论！
         tmp = tmp * i % MOD;
         s += tmp;
     }
