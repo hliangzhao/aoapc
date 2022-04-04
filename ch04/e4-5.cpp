@@ -10,7 +10,7 @@
 // TODO: my_method()这个方法没有实现完！
 void my_method() {
 #ifdef LOCAL
-    freopen("../ch04/e4-5-data-1.in", "e4_5_r", stdin);
+    freopen("../ch04/e4-5-data-1.in", "r", stdin);
 #endif
     int r, c, table[55][55];
     scanf("%d%d", &r, &c);

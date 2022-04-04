@@ -20,5 +20,5 @@ int main() {
 
     // TODO: 通过加上一个小数来缓解这个问题
     printf("%.1f\n", f / 4 + EPS);
-    return 1;
+    return 0;
 }
