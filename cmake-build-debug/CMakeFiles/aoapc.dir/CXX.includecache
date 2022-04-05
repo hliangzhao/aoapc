@@ -6,11 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/Users/hliangzhao/Documents/GitHub/aoapc/ch04/p4-10.cpp
+/Users/hliangzhao/Documents/GitHub/aoapc/ch05/e5-4-2.cpp
+iostream
+-
 cstdio
 -
-cstdlib
+map
 -
-cstring
+vector
+-
+cctype
+-
+algorithm
 -
 

@@ -129,29 +129,29 @@ aoapc/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/aoapc.dir/build.make CMakeFiles/aoapc.dir/build
 .PHONY : aoapc/fast
 
-ch04/p4-10.o: ch04/p4-10.cpp.o
-.PHONY : ch04/p4-10.o
+ch05/e5-4-2.o: ch05/e5-4-2.cpp.o
+.PHONY : ch05/e5-4-2.o
 
 # target to build an object file
-ch04/p4-10.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/aoapc.dir/build.make CMakeFiles/aoapc.dir/ch04/p4-10.cpp.o
-.PHONY : ch04/p4-10.cpp.o
+ch05/e5-4-2.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aoapc.dir/build.make CMakeFiles/aoapc.dir/ch05/e5-4-2.cpp.o
+.PHONY : ch05/e5-4-2.cpp.o
 
-ch04/p4-10.i: ch04/p4-10.cpp.i
-.PHONY : ch04/p4-10.i
+ch05/e5-4-2.i: ch05/e5-4-2.cpp.i
+.PHONY : ch05/e5-4-2.i
 
 # target to preprocess a source file
-ch04/p4-10.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/aoapc.dir/build.make CMakeFiles/aoapc.dir/ch04/p4-10.cpp.i
-.PHONY : ch04/p4-10.cpp.i
+ch05/e5-4-2.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aoapc.dir/build.make CMakeFiles/aoapc.dir/ch05/e5-4-2.cpp.i
+.PHONY : ch05/e5-4-2.cpp.i
 
-ch04/p4-10.s: ch04/p4-10.cpp.s
-.PHONY : ch04/p4-10.s
+ch05/e5-4-2.s: ch05/e5-4-2.cpp.s
+.PHONY : ch05/e5-4-2.s
 
 # target to generate assembly for a file
-ch04/p4-10.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/aoapc.dir/build.make CMakeFiles/aoapc.dir/ch04/p4-10.cpp.s
-.PHONY : ch04/p4-10.cpp.s
+ch05/e5-4-2.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aoapc.dir/build.make CMakeFiles/aoapc.dir/ch05/e5-4-2.cpp.s
+.PHONY : ch05/e5-4-2.cpp.s
 
 # Help Target
 help:
@@ -162,9 +162,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... aoapc"
-	@echo "... ch04/p4-10.o"
-	@echo "... ch04/p4-10.i"
-	@echo "... ch04/p4-10.s"
+	@echo "... ch05/e5-4-2.o"
+	@echo "... ch05/e5-4-2.i"
+	@echo "... ch05/e5-4-2.s"
 .PHONY : help
 
 
