@@ -218,7 +218,7 @@
   ```
 
 
-#### C++常用套路与STL
+#### C++基础与套路
 
 * 多行输入的处理：
   + C语言的`getchar`写法。不断读入字符，根据它是换行符、EOF、空格还是数字进行相应的处理。
@@ -228,6 +228,10 @@
   具体内容参加`c5-3`。
 * C++中的结构体、构造函数与运算符重载的案例，参见`c5-4`。
 * C++中的模版的案例，参见`c5-5`和`c5-6`。
+
+
+#### STL与容器的熟练使用
+
 * 利用`algorithm`头文件提供的`sort`、`lower_bound`等方法简化代码。
 * 关于vector的使用参考`e5-2`。总结如下：
   + 首先，需要引入`#include <vector>`；
@@ -237,6 +241,93 @@
   + vector之间可以直接赋值，vector也可以作为函数的返回值（一等公民）。
 * 关于set的使用参考`e5-3`。
 * set和map都支持`insert`、`remove`、`count`、`find`操作，后者还支持`[]`运算符。map使用`first`和`second`标识kv。
+* 多种容器的配合使用参见`e5-5`。本题有如下几点值得细细玩味：
+  + 将题目中自定义的「数据类型」映射到整数，从而使得STL提供的容器可以被使用；
+  + 使用宏（这不是必须的）；
+  + 对于stack本身，我们重点关注push, pop和top三种操作。
+  ```C++
+  // 将集合映射到整数，则集合的集合就是整数的集合
+  typedef set<int> Set;
+  
+  // 记录集合的集合和对应的整数的映射关系
+  map<Set, int> IDCache;
+  
+  // 存放所有已经出现的集合（的集合）。元素的下标就是集合（的集合）所映射到的整数。
+  // SetCache和IDCache相互交换kv
+  vector<Set> SetCache;
+  
+  // 题目中的栈
+  stack<int> e55_s;
+  
+  // 对应给定的Set，如没有id则创建，否则从cache中返回
+  int get_id(const Set &x) {
+      if (IDCache.count(x)) {
+          return IDCache[x];
+      }
+      SetCache.push_back(x);
+      return IDCache[x] = (int) SetCache.size() - 1;
+  }
+  ```
+* queue的使用案例参见`e5-6`。对于队列queue，我们重点关注`push`、`pop`和`front`三个操作。
+* 优先队列的使用案例参见`e5-7`。优先队列使用`push`和`pop`入队和出队，但使用`top`取队首元素。
+  + 默认情况下优先队列中「越小的元素优先级越低」，下面给出了一个案例：
+    ```C++
+    void test_pq1() {
+        priority_queue<int> pq;
+        // 入队顺序为2 3 1
+        pq.push(2);
+        pq.push(3);
+        pq.push(1);
+  
+        // 出队顺序为3 2 1
+        while (!pq.empty()) {
+            int val = pq.top();
+            cout << val << endl;
+            pq.pop();
+        }
+    }
+    ```
+  + 下面的案例中，我们自定义了一个「个位数越大的整数优先级越低」的优先队列：
+    ```C++
+    // 需要自己实现cmp仿函数。当a优先级低于b的时候，返回true
+    struct cmp {
+        bool operator()(const int a, const int b) {
+            return a % 10 > b % 10;
+        }
+    };
+  
+    void test_pq2() {
+    priority_queue<int, vector<int>, cmp> pq;
+    // 入队顺序为33 12 11
+    pq.push(33);
+    pq.push(12);
+    pq.push(11);
+  
+        // 出队顺序为11 12 33
+        while (!pq.empty()) {
+            int val = pq.top();
+            cout << val << endl;
+            pq.pop();
+        }
+    } 
+    ```
+  + 下面的案例中，我们直接使用STL自带的仿函数创建一个「越小优先级越大」的优先队列：
+    ```C++
+    void test_pq3() {
+        priority_queue<int, vector<int>, greater<int> > pq;
+        // 入队顺序为2 3 1
+        pq.push(2);
+        pq.push(3);
+        pq.push(1);
+  
+        // 出队顺序为1 2 3
+        while (!pq.empty()) {
+            int val = pq.top();
+            cout << val << endl;
+            pq.pop();
+        }
+    }
+    ```
 
 ### TODO
-整理自`e5-5`的习题开始的部分。
+完成第4章剩下的8道习题。
