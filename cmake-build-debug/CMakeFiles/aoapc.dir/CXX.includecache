@@ -6,17 +6,15 @@
 
 #IncludeRegexTransform: 
 
-/Users/hliangzhao/Documents/GitHub/aoapc/ch05/e5-4-2.cpp
+/Users/hliangzhao/Documents/GitHub/aoapc/ch05/e5-9.cpp
 iostream
--
-cstdio
--
-map
 -
 vector
 -
-cctype
+map
 -
-algorithm
+sstream
+-
+cstdio
 -
 

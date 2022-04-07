@@ -37,7 +37,7 @@ int main() {
         int v2 = v;
         // 假设e[i] < x <= e[i+1]
         // 则100 * (\sum_{j <= i} (e[i] - e[j])) + 100 * (\sum_{j <= i} (x - e[i])) = v
-        // 由此计算出x。若x不满足x <= e[i+1]，则continue
+        // 由此计算出x。若x不满足范围要求，则continue
         for (int j = 0; j <= i; j++) {
             v2 -= 100 * (elevations[i] - elevations[j]);
         }
@@ -45,10 +45,10 @@ int main() {
         if (x <= elevations[i] || x > elevations[i + 1]) {
             continue;
         } else {
-            printf("Water level is %.2f meters.\n%.2f percent of the region is under water.\n", x, (double) (i+1) / (m * n) * 100);
+            printf("Water level is %.2f meters.\n%.2f percent of the region is under water.\n", x,
+                   (double) (i + 1) / (m * n) * 100);
         }
     }
 
     return 0;
 }
-

@@ -22,8 +22,8 @@
 * 常数pi的申明：`const double pi = acos(-1.0);`
 * 验证平方数的方法：
   ```C++
-  int m = floor(sqrt(s) + 0.5);
-  if (m * m == s) {
+  int mapper = floor(sqrt(s) + 0.5);
+  if (mapper * mapper == s) {
       printf("%d\n", s);
   }
   ```
@@ -158,8 +158,8 @@
   int is_prime(int n) {
       if (n <= 1) return 0;
       // 有一个小因子，就必然有一个与之对应的大因子，因此只需要判断前半部分是否存在因子即可
-      int m = floor(sqrt(n) + 0.5);
-      for (int i = 2; i <= m; i++) {
+      int mapper = floor(sqrt(n) + 0.5);
+      for (int i = 2; i <= mapper; i++) {
           if (n % i == 0) {
               return 0;
           }
@@ -250,7 +250,7 @@
   typedef set<int> Set;
   
   // 记录集合的集合和对应的整数的映射关系
-  map<Set, int> IDCache;
+  map<Set, int> e59_IDCache;
   
   // 存放所有已经出现的集合（的集合）。元素的下标就是集合（的集合）所映射到的整数。
   // SetCache和IDCache相互交换kv
@@ -261,11 +261,11 @@
   
   // 对应给定的Set，如没有id则创建，否则从cache中返回
   int get_id(const Set &x) {
-      if (IDCache.count(x)) {
-          return IDCache[x];
+      if (e59_IDCache.count(x)) {
+          return e59_IDCache[x];
       }
       SetCache.push_back(x);
-      return IDCache[x] = (int) SetCache.size() - 1;
+      return e59_IDCache[x] = (int) SetCache.size() - 1;
   }
   ```
 * queue的使用案例参见`e5-6`。对于队列queue，我们重点关注`push`、`pop`和`front`三个操作。
@@ -330,4 +330,6 @@
     ```
 
 ### TODO
-完成第4章剩下的8道习题。
+
+* 完成第4章剩下的8道习题。
+* 整理`c5-7`，`c5-8`以及自`e5-8`开始的内容。
