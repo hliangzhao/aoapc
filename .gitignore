@@ -1,1 +1,5 @@
-/cmake-build-debug/
+/cmake-build-debug/Testing/
+/cmake-build-debug/CMakeFiles/
+/cmake-build-debug/aoapc
+/cmake-build-debug/aoapc.cbp
+/cmake-build-debug/cmake_install.cmake
