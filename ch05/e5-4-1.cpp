@@ -12,7 +12,7 @@
 using namespace std;
 
 // TODO：我的方法 —— 结合map和set
-//  set和map都支持insert、remove、count、find操作，后者还支持[]运算符。
+//  set和map都支持insert、erase、count、find操作，后者还支持[]运算符。
 
 map<string, int> word_cnt;
 map<string, string> word_shadow;

@@ -23,7 +23,7 @@ void menu() {
 }
 
 int main() {
-    // TODO: 还没测试
+    // TODO: 本代码未经测试
     menu();
     int choice;
     while (scanf("%d", &choice) == 1 && choice != 0) {

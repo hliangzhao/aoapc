@@ -10,6 +10,7 @@
 using namespace std;
 
 // TODO：使用set
+//  set有insert、erase等方法。
 
 set<string> dict;
 
