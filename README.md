@@ -355,7 +355,8 @@
   cin >> n;
   while (cin >> input) {
       s.insert(input);
-      // 下面的错误极易犯！input.length()返回的是unsigned long类型，如果不转换为int类型，则-10000会被转换为unsigned和前者进行比较。
+      // 下面的错误极易犯！input.length()返回的是unsigned long类型，
+      // 如果不转换为int类型，则-10000会被转换为unsigned和前者进行比较。
       // 因为符号（首位为1）是一个很大的unsigned数字，因此这个if不成立，从而导致max_len无法更新。
       if ((int) input.length() > max_len) {
           max_len = (int) input.length();
@@ -385,3 +386,5 @@
 
 * 完成第4章剩下的8道习题。 
 * 完成第5章剩下的6道习题。
+* 整理第6章的内容。
+* 重做第6章已完成的题目以加深印象。

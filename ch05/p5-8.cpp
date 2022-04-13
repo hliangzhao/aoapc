@@ -16,7 +16,7 @@ const int max_author_num = 100;
 
 int main() {
     freopen("../ch05/p5-8-data.in", "r", stdin);
-    map<string, set<string>> lib;     // lib在内部会自动按照key（作者）顺序排序
+    map<string, set<string>> lib;     // TODO: map（lib）在内部会自动按照key（作者）顺序排序
     map<string, string> title2author;
     string line;
     while (getline(cin, line) && line != "END") {
