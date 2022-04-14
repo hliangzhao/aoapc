@@ -2,7 +2,7 @@
 // Created by hliangzhao on 2022/4/13.
 //
 
-// TODO: 使用「结构体+指针」的方式存储节点和树
+// TODO: 使用「静态结构体数组 + 内存池技术」的方式存储节点和树
 
 #include <cstdio>
 #include <cstring>
@@ -20,9 +20,32 @@ struct Node {
     Node() : have_value(false), val(0), left(nullptr), right(nullptr) {}
 };
 
-// TODO: 通过new运算符申明新的内存空间。内部自动调用（对应的）构造函数，返回新分配的变量的地址
+// TODO：静态申请的结构体数组
+const int maxn = 256;
+Node nodes[maxn];
+
+// TODO: 空闲数组列表
+queue<Node *> free_nodes;
+
+// TODO: 初始化内存池
+void init() {
+    for (auto &node : nodes) {
+        free_nodes.push(&node);
+    }
+}
+
+// TODO: 创建一个新的node，本质上就是从内存池中申请一个node空间占用
 Node *new_node() {
-    return new Node();
+    Node *u = free_nodes.front();
+    u->left = u->right = nullptr;
+    u->have_value = false;
+    free_nodes.pop();
+    return u;
+}
+
+// TODO: 释放一个node，本质上就是将其放回空闲内存池中
+void delete_node(Node *u) {
+    free_nodes.push(u);
 }
 
 // TODO: 全局的根节点
@@ -51,23 +74,15 @@ void add_node(int val, char *path) {
     if (u->have_value) {
         failed = true;
     }
-    // 赋值
+    // 将val存入编号为u的节点中
     u->val = val;
     u->have_value = true;
 }
 
-// TODO：通过delete运算符释放u所代表的变量占用的空间。内部自动调用析构函数。
-void remove_tree(Node *u) {
-    if (u == nullptr) return;
-    remove_tree(u->left);
-    remove_tree(u->right);
-    delete u;
-}
-
-const int maxn = 256;
 char s[maxn];
 
 bool read_input() {
+    init();
     failed = false;
     root = new_node();
     for (;;) {
@@ -81,8 +96,8 @@ bool read_input() {
     return true;
 }
 
-// TODO: 使用queue实现BFS
-bool dfs(vector<int> &ans) {    // 参数为引用类型
+// 参数为引用类型
+bool dfs(vector<int> &ans) {
     queue<Node *> q;
     ans.clear();
     q.push(root);
@@ -92,7 +107,6 @@ bool dfs(vector<int> &ans) {    // 参数为引用类型
         // 创建树的时候途径的节点都被构造出来了，但是如果一个节点没有数值意味着对应的输入存在问题
         if (!u->have_value) return false;
         ans.push_back(u->val);
-        // 依次将左右子树插入队列尾部
         if (u->left != nullptr) q.push(u->left);
         if (u->right != nullptr) q.push(u->right);
     }
@@ -102,22 +116,13 @@ bool dfs(vector<int> &ans) {    // 参数为引用类型
 int main() {
     freopen("../ch06/e6-7-data.in", "r", stdin);
     while (true) {
-        remove_tree(root);
         if (!read_input()) break;
         vector<int> ans;
-        // 输入问题有两种：(1) 节点被重复赋值；(2) 存在节点没有被赋值
         if (failed || !dfs(ans)) {
             printf("-1\n");
         } else {
-            int first = 1;
-
             for (auto &it: ans) {
-                if (first) {
-                    printf("%d", it);
-                    first = 0;
-                } else {
-                    printf(" %d", it);
-                }
+                printf("%d ", it);
             }
             printf("\n");
         }
