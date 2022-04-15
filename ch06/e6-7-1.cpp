@@ -81,7 +81,7 @@ bool read_input() {
     return true;
 }
 
-// TODO: 使用queue实现BFS
+// TODO: 使用queue实现BFS (二叉树的层序遍历)
 bool dfs(vector<int> &ans) {    // 参数为引用类型
     queue<Node *> q;
     ans.clear();
