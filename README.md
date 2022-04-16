@@ -1,6 +1,6 @@
 ## AOAPC
 
-论文灌多了，觉得打代码十分手生，遂做做算法题。所有题解均不严格遵守输入输出规范，旨在算法设计、套路总结和错误处理。
+论文看多了，觉得打代码十分手生，遂做做算法题。所有题解均不严格遵守输入输出规范，旨在算法设计、套路总结和错误处理。
 题目来自《算法竞赛入门经典（第二版）》。
 
 ### 题解编号
@@ -19,22 +19,21 @@
 
 #### C输入输出与常用套路
 
-* 常数pi的申明：`const double pi = acos(-1.0);`
+* 常数pi的申明：`const double pi = acos(-1.0)`。注意引用`cmath`头文件。
 * 验证平方数的方法：
   ```C++
+  #include <cmath>
   int mapper = floor(sqrt(s) + 0.5);
   if (mapper * mapper == s) {
       printf("%d\n", s);
   }
   ```
-* 保证数字运算不溢出，使用`long long`存储数据：
+* 当问题规模很大时，为了保证数字运算不溢出，可以使用`long long`存储数据：
   ```C++
+  int n;
   scanf("%d", &n);
   long long n2 = n; 
   ```
-* 熟练运用「逻辑运算符是短路运算」的特点。 
-  例如，想检查一个数组的某个位置上的元素是否为需要的数字，首先需要判断这个位置是否合法，然后判断上面存放的数字。
-  如果不合法，则数组元素引用不会发生。
 * 使用`clock()`函数测试程序运行时间：
   ```C++
   #include <ctime>
@@ -47,6 +46,8 @@
   ```
 * 善用条件编译指令`#ifdef`和输入输出重定向：
   ```C++
+  #include <cstdio>
+  
   #define LOCAL
   #ifdef LOCAL
       // 将stdin和stdout重定向为文件
@@ -54,14 +55,19 @@
       freopen("../ch02/e2-5-data.out", "w", stdout);
   #endif
   ```
-* 使用文本流：
+  使用重定向可以在本地对代码进行测试。提交时，只需要注释掉`#define LOCAL`即可。
+* 使用文本流 —— 从文本流中读取数据、将数据写入文本流。
   ```C++
+  #include <cstdio>
+  
   FILE *fin, *fout;
   fin = fopen("../ch02/e2-5-data.in", "rb");
   fout = fopen("../ch02/e2-5-data.out", "wb");
   while (fscanf(fin, "%d", &x) == 1) {
       // do sth...
   }
+  
+  // close stream
   fclose(fin);
   fclose(fout);
   ```
@@ -74,10 +80,11 @@
   ```
 * 比较大的数组应当申明在函数外（在堆而非栈上，防止栈溢出）：
   ```C++
-  #define SIZE 105
+  #define SIZE 1000000 + 5
   int arr[SIZE];
   
   void func() { ... }
+  
   int main() {
       // ...
       return 1;
@@ -102,6 +109,16 @@
   #include <cstring>
   memset(arr, 0, sizeof(arr));
   ```
+* 熟练运用「逻辑运算符是短路运算」的特点。
+  例如，想检查一个数组的某个位置上的元素是否为需要的数字，首先需要判断这个位置是否合法，然后判断上面存放的数字。
+  如果不合法，则数组元素引用不会发生。
+  ```C++
+  // 如果i不在[0,n)之间，则arr[i]这个元素不会被检查
+  if (!(i < 0 || i >= n) && arr[i] == 1) {
+      // do sth.
+  }
+  ```
+  具体可以参见`c3-3`。
 * 使用`scanf`直接将文本读入字符数组中。`scanf`遇到空白字符（空格、Tab等）就会停下来：
   ```C++
   char s[20];
@@ -110,12 +127,13 @@
   使用`fscanf`可以从文本流中读取。上面已经有了一个例子。
 * 使用`sprintf`直接将变量的字面量作为字符写入字符数组中：
   ```C++
+  char buf[99];
   // 当五个int变量的值分别为12、13、5、17、90时，
   // buf为"12xyz1351790"
   sprintf(buf, "%dxyz%d%d%d%d", abc, de, x, y, z);
   ```
 * 使用`strlen`返回字符结束标记`\0`之前的字符个数。
-* 使用`strchr`检查每个字符是否在字符串内：
+* 使用`strchr`检查某一个字符是否在字符串内：
   ```C++
   int ok = 1;
   for (int i = 0; i < strlen(buf); i++) {
@@ -171,6 +189,8 @@
 * 将数组首地址作为函数参数的正确用法，参见`c4-6`和`c4-8`。
 * 使用`cstdlib`的`qsort`函数对数组进行排序。需要自己实现`compare`函数。
   ```C++
+  #include <cstdlib>
+  
   int cnt1[26], cnt2[26];
   
   // 注意，cmp的参数为const void *类型，在使用时转换成对应的数据类型指针
@@ -211,8 +231,8 @@
 * 浮点数在加减一个很小的小数时常常会面临精度问题。
   这个时候，在打印输出时，可以加上一个比输出精度小几个数量级的一个小数`EPS`来缓解由此带来的问题。
 * `p4-5`给出了按位与运算的一个示例（找到最小网段）。
-* 使用`cin`和`cout`进行IO比`scanf`和`printf`更加方便。但是要慢一些。观察题目情况合理进行选择。
-  使用`scanf进行读取时，如果输入有多行，则需要注意把换行符也读进来，否则会造成后续读取错误。
+* 使用`cin`和`cout`进行IO比`scanf`和`printf`更加方便，但是要慢一些。需要观察题目情况合理进行选择。
+  使用`scanf`进行读取时，如果输入有多行，则需要注意把换行符也读进来，否则会造成后续读取错误。
 * 使用参数引用作为函数参数（实参与形参）：
   ```C++
   void my_swap(int &a, int &b) {
@@ -248,7 +268,8 @@
   sort(a, a + n);
   
   // lower_bound()适合对已经排好序的数组使用
-  int pos = lower_bound(a, a+n, b[i]) - a;
+  // 从数组[a[0], ..., a[n-1]]中按照index增加的顺序找到元素b
+  int pos = lower_bound(a, a+n, b) - a;
   ```
 * 关于vector的使用参考`e5-2`。总结如下：
   + 首先，需要引入`#include <vector>`；
@@ -363,7 +384,7 @@
       }
   }
   ```
-* string头文件提供的截取子串的方法：
+* 使用string头文件提供的截取子串的方法`substr`：
   ```C++
   // abc@alibaba.com
   void parse_addr(const string &s, string &user, string &mta) {

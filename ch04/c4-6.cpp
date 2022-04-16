@@ -4,6 +4,7 @@
 
 #include <cstdio>
 
+// TODO：正确写法
 void swap(int *a, int *b) {
     int t = *a;
     *a = *b;
