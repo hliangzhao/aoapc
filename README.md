@@ -499,7 +499,7 @@
     // 空闲数组列表
     queue<Node *> free_nodes;
     // 初始化内存池
-    void init() {
+    void set_hex2bin() {
         for (auto &node : nodes) {
             free_nodes.push(&node);
         }

@@ -7,7 +7,7 @@
 using namespace std;
 
 // TODO: 图也有DFS和BFS。和树一样，前者可以通过递归来实现，后者可以借助队列来实现。
-//  求二维数组连通块是一个十分经典的问题，彻底掌握！
+//  求二维数组连通块（又名：种子填充、floodfill）是一个十分经典的问题，彻底掌握！
 
 const int maxn = 100 + 5;
 
@@ -17,8 +17,10 @@ int m, n, idx[maxn][maxn];
 
 void dfs(int r, int c, int id) {
     // 出界
-    if (r < 0 || r >= m || c < 0 || c >= m) return;
+    if (r < 0 || r >= m || c < 0 || c >= n) return;
     // 已访问或不是连通块元素
+    // TODO: 为什么第45行已经确认了调用dfs的条件，这里仍然需要再判断一遍？这是因为dfs不仅在第46行被调用，在本函数内也被递归调用了！
+    //  对于这些递归进来的调用请求，必须要判断它们的调用是否合法。
     if (idx[r][c] > 0 || arr[r][c] != '@') return;
     idx[r][c] = id;
     // 依次遍历上下左右包围着的8个元素

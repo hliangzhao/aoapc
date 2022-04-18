@@ -37,8 +37,7 @@ int main() {
             if (op == 4) inv = !inv;
             else {
                 scanf("%d %d", &X, &Y);
-                // TODO: 并不需要真正在双向链表中交换这两个元素，只需要先"标记"以下，
-                //  注意它会对op1和op2产生影响
+                // TODO: 这里为什么要swap X 和 Y ？
                 if (op == 3 && right[Y] == X) {
                     swap(X, Y);
                 }
@@ -81,8 +80,8 @@ int main() {
                 res += b;
             }
         }
-        // TODO: 若是奇数个元素，则inv不会有影响；
-        //  若是偶数个，inv有影响。
+        // TODO: 若是奇数个元素，则inv不会对结果产生影响；
+        //  若是偶数个，则inv会产生影响。
         if (inv && n % 2 == 0) {
             res = (long long) n * (n + 1) / 2 - res;
         }
