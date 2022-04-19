@@ -73,7 +73,7 @@
   ```
 * 读取不给定输入个数的多个输入：
   ```C++
-  int e4_5_n;
+  int n;
   while (scanf("%d", &n) == 1) {
       // do sth.
   }
@@ -291,22 +291,22 @@
   typedef set<int> Set;
   
   // 记录集合的集合和对应的整数的映射关系
-  map<Set, int> e59_IDCache;
+  map<Set, int> IDCache;
   
   // 存放所有已经出现的集合（的集合）。元素的下标就是集合（的集合）所映射到的整数。
   // SetCache和IDCache相互交换kv
   vector<Set> SetCache;
   
   // 题目中的栈
-  stack<int> e55_s;
+  stack<int> s;
   
   // 对应给定的Set，如没有id则创建，否则从cache中返回
   int get_id(const Set &x) {
       if (e59_IDCache.count(x)) {
-          return e59_IDCache[x];
+          return IDCache[x];
       }
       SetCache.push_back(x);
-      return e59_IDCache[x] = (int) SetCache.size() - 1;
+      return IDCache[x] = (int) SetCache.size() - 1;
   }
   ```
 * stack可以用于简单表达式的解析。具体案例参见`e6-3`。
