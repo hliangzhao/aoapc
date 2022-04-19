@@ -70,6 +70,7 @@ void dfs(int r, int c, int clr) {
         // TODO：dfs的条件 —— 位置(r2, c2)合法、该位置没有被探索过、且该位置和(r, c)数字一致（要么同为0、要么同为1）
         //  满足这3个条件的位置才和本位置属于同一个颜色
         if (r2 >= 0 && r2 < H && c2 >= 0 && c2 < W && pic[r][c] == pic[r2][c2] && color[r2][c2] == 0) {
+            // TODO: 纵观dfs的使用案例可以发现，dfs内部递归的时候，id（clr）是同一个；而在外部调用dfs的时候，传入的则是++i（++clr）
             dfs(r2, c2, clr);
         }
     }
@@ -134,6 +135,7 @@ int main() {
                             // neighbors[element = 2] = {3}
                             // neighbors[element = 4] = {}
                             // neighbors[element = 5] = {6, 7}
+                            // TODO：注意，neighbours内部的元素为set，因此，当同一个颜色被重复插入时，不会改变set的大小和内容。
                             neighbors[color[i][j]].insert(color[r2][c2]);
                         }
                     }

@@ -48,7 +48,7 @@ bool inside(int r, int c) {
     return r >= 1 && r <= 9 && c >= 1 && c <= 9;
 }
 
-bool read_case() {
+bool read_input() {
     char s[99], s2[99];
     if (scanf("%s%d%d%s%d%d", s, &r0, &c0, s2, &r2, &c2) != 6) return false;
     printf("%s\n", s);
@@ -120,7 +120,7 @@ void solve() {
 
 int main() {
     freopen("../ch06/e6-14-data.in", "r", stdin);
-    while (read_case()) {
+    while (read_input()) {
         solve();
     }
     return 0;
