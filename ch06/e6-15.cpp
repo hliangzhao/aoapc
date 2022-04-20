@@ -3,6 +3,7 @@
 //
 
 // TODO: 使用DFS求出DAG的拓扑排序。本代码还可以判断给定的图是否有环路。
+//  结合e6-19实现DFS版的拓扑排序！
 
 #include <cstdio>
 #include <cstring>
@@ -26,9 +27,9 @@ bool dfs(int u) {
         // 找到u的所有后继v
         if (G[u][v]) {
             // 存在环路
-            if (vis_state[v] == -1) return false;
+            if (vis_state[v] < 0) return false;
             // v没有被访问过，但是进去递归访问一下发现存在环路
-            else if (vis_state[v] == 0 && !dfs(v)) return false;
+            else if (!vis_state[v] && !dfs(v)) return false;
         }
     }
     // 对u的递归访问结束，设置状态为1
