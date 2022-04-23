@@ -73,6 +73,18 @@ void dfs(int node, int sum) {
     }
 }
 
+//int dfs2(int u) {
+//    if (!left_node[u] && !right_node[u]) {
+//        return u;
+//    }
+//    if (left_node[u]) {
+//        return u + dfs2(right_node[u]);
+//    }
+//    if (left_node[u]) {
+//        return u + dfs2(right_node[u]);
+//    }
+//}
+
 int main() {
     freopen("../ch06/e6-8-data.in", "r", stdin);
     while (read_list(in_order)) {
@@ -82,6 +94,7 @@ int main() {
         // dfs从根节点开始
         dfs(post_order[n - 1], 0);
         cout << best_node << endl;
+//        cout << dfs2(post_order[n - 1]) << endl;
     }
     return 0;
 }

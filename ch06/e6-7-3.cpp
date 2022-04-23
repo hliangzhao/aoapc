@@ -24,7 +24,7 @@ struct Node {
 const int maxn = 256;
 Node nodes[maxn];
 
-// TODO: 空闲数组列表
+// TODO: 空闲节点列表
 queue<Node *> free_nodes;
 
 // TODO: 初始化内存池
