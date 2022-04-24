@@ -6,6 +6,8 @@
 #include <stack>
 #include <cstring>
 
+// TODO: 这是一个欧拉道路的简单示例
+
 using namespace std;
 
 const int maxn = 100 + 5;

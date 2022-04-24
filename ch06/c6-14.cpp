@@ -52,6 +52,20 @@ void bfs() {
     }
 }
 
+// 追溯从目标节点到初始节点的最短路径
+void print_path(Node u) {
+    vector<Node> path;
+    for (;;) {
+        path.push_back(u);
+        if (dis[u.x][u.y] == 0) break;
+        u = parent[u.x][u.y];
+    }
+    for (int i = path.size() - 1; i >= 0; i--) {
+        printf("(%d,%d) ", path[i].x, path[i].y);
+    }
+    printf("\n");
+}
+
 int main() {
     m = 6;
     n = 5;
@@ -64,6 +78,7 @@ int main() {
     }
     bfs();
 
+    // 打印最短路径的长度
     for (int i = 0; i < m; i++) {
         for (int j = 0; j < n; j++) {
             printf("%d ", dis[i][j]);
@@ -71,11 +86,23 @@ int main() {
         printf("\n");
     }
     printf("\n");
+
+    // 打印BFS树的节点编号
     for (int i = 0; i < m; i++) {
         for (int j = 0; j < n; j++) {
             printf("%d ", c[i][j]);
         }
         printf("\n");
+    }
+    printf("\n");
+
+    // 打印最短路径本身
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            if (arr[i][j] == 1) {
+                print_path(Node(i,j));
+            }
+        }
     }
 
     return 0;
