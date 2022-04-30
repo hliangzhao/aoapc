@@ -411,12 +411,12 @@
 
 * 当数组内的元素不能按照顺序方式读取的时候，可以引入一个新的数据`next`。`next[i]`记录第`i`个元素的下一个元素的index。这就是链表。
   链表不一定需要借助结构体和指针来实现。只凭借数组也可。具体案例参见`e6-4`。
-* 双向链表可以借助两个额外的数组来实现，分别用`left[i]`和`right[i]`表示编号为`i`的元素的左节点和右节点。 
+* 双向链表可以借助两个额外的数组来实现，分别用`l[i]`和`r[i]`表示编号为`i`的元素的左节点和右节点。 
   则让两个节点互相连接的操作可以抽象为如下函数：
   ```C++
   void link(int L, int R) {
-      right[L] = R;
-      left[R] = L;
+      r[L] = R;
+      l[R] = L;
   }
   ```
   有些题目可以通过模拟操作的方式来实现，但实际上，有的时候并不需要真的去模拟每一个操作。
@@ -427,27 +427,27 @@
   + 一个标准的二叉树可以用「结构体 + 指针」的方式实现：
     ```C++
     // 节点结构体
-    struct Node {
+    struct Seq {
         bool have_value;
         int val;
-        Node *left, *right;
+        Seq *l, *r;
     
-        Node() : have_value(false), val(0), left(nullptr), right(nullptr) {}
+        Seq() : have_value(false), val(0), l(nullptr), r(nullptr) {}
     };
     
     // 通过new运算符申明新的内存空间。内部自动调用（对应的）构造函数，返回新分配的变量的地址
-    Node *new_node() {
-        return new Node();
+    Seq *new_node() {
+        return new Seq();
     }
     
     // 全局的根节点
-    Node *root;
+    Seq *root;
     
     // 通过delete运算符释放u所代表的变量占用的空间。内部自动调用析构函数。
-    void remove_tree(Node *u) {
+    void remove_tree(Seq *u) {
         if (u == nullptr) return;
-        remove_tree(u->left);
-        remove_tree(u->right);
+        remove_tree(u->l);
+        remove_tree(u->r);
         delete u;
     }
     ```
@@ -458,9 +458,9 @@
     // 用left和right数组分别表示每个节点的左孩子和右孩子的编号（注意区分节点的编号和节点中存放的数值）
     // 用values数组记录每一个节点中存放的数值
     // 用have_value数组记录每一个节点是否已经被赋值
-    int cnt;
+    int leaf_num;
     const int max_node_num = 256;
-    int left[max_node_num], right[max_node_num];
+    int l[max_node_num], r[max_node_num];
     int values[max_node_num];
     bool have_value[max_node_num];
 
@@ -469,35 +469,35 @@
 
     // 只需要重置计数器和根节点的左右子树即可清空整棵树
     void new_tree() {
-        left[root] = right[root] = 0;
+        l[root] = r[root] = 0;
         have_value[root] = false;
-        cnt = root;
+        leaf_num = root;
     }
 
     // 创建一个节点，只需要初始化其左右子树即可。返回的是当前节点的编号
     int new_node() {
-        int u = ++cnt;
-        left[u] = right[u] = 0;
+        int u = ++leaf_num;
+        l[u] = r[u] = 0;
         have_value[u] = false;
         return u;
     }
     ```
   + 还可以使用「静态结构体数组 + 内存池技术」的方式存储节点和树。
     ```C++
-    struct Node { 
+    struct Seq { 
         bool have_value;
         int val;
-        Node *left, *right;
+        Seq *l, *r;
 
-        Node() : have_value(false), val(0), left(nullptr), right(nullptr) {}
+        Seq() : have_value(false), val(0), l(nullptr), r(nullptr) {}
     };
 
     // 静态申请的结构体数组
     const int maxn = 256;
-    Node nodes[maxn];
+    Seq nodes[maxn];
 
     // 空闲数组列表
-    queue<Node *> free_nodes;
+    queue<Seq *> free_nodes;
     // 初始化内存池
     void set_hex2bin() {
         for (auto &node : nodes) {
@@ -506,38 +506,38 @@
     }
     
     // 创建一个新的node，本质上就是从内存池中申请一个node空间占用
-    Node *new_node() {
-        Node *u = free_nodes.front();
-        u->left = u->right = nullptr;
+    Seq *new_node() {
+        Seq *u = free_nodes.front();
+        u->l = u->r = nullptr;
         u->have_value = false;
         free_nodes.pop();
         return u;
     }
     
     // 释放一个node，本质上就是将其放回空闲内存池中
-    void delete_node(Node *u) {
+    void delete_node(Seq *u) {
         free_nodes.push(u);
     }
     
     // 全局的根节点
-    Node *root;
+    Seq *root;
     ```
 * 可以用队列queue实现二叉树的层序遍历（宽度优先遍历BFS）：
   ```C++
   // 使用queue实现BFS [结构体 + 指针]
   bool dfs(vector<int> &ans) {    // 参数为引用类型
-      queue<Node *> q;
+      queue<Seq *> q;
       ans.clear();
       q.push(root);
       while (!q.empty()) {
-          Node *u = q.front();
+          Seq *u = q.front();
           q.pop();
           // 创建树的时候途径的节点都被构造出来了，但是如果一个节点没有数值意味着对应的输入存在问题
           if (!u->have_value) return false;
           ans.push_back(u->val);
           // 依次将左右子树插入队列尾部
-          if (u->left != nullptr) q.push(u->left);
-          if (u->right != nullptr) q.push(u->right);
+          if (u->l != nullptr) q.push(u->l);
+          if (u->r != nullptr) q.push(u->r);
       }
       return true;
   }
@@ -553,8 +553,8 @@
           // 创建树的时候途径的节点都被构造出来了，但是如果一个节点没有数值意味着对应的输入存在问题
           if (!have_value[u]) return false;
           ans.push_back(u);
-          if (left[u] != 0) q.push(left[u]);
-          if (right[u] != 0) q.push(right[u]);
+          if (l[u] != 0) q.push(l[u]);
+          if (r[u] != 0) q.push(r[u]);
       }
       return true;
   }
