@@ -93,7 +93,7 @@ void print_ans(Node u) {
 }
 
 // TODO: solve本身是一个BFS，借助队列来实现。
-void solve() {
+void bfs() {
     queue<Node> q;
     memset(d, -1, sizeof(d));
     Node u(r1, c1, dir);
@@ -121,7 +121,7 @@ void solve() {
 int main() {
     freopen("../ch06/e6-14-data.in", "r", stdin);
     while (read_input()) {
-        solve();
+        bfs();
     }
     return 0;
 }

@@ -14,7 +14,7 @@ map<long long, int> values;     // 存放叶子的value到出现次数的映射
 int leaf_num, max_value;
 
 // TODO：这个递归函数的设计十分牛逼
-void solve(int level, int begin, int len) {
+void dfs(int level, int begin, int len) {
     if (s[begin] == '[') {
         int p = 0;
         for (int i = begin + 1; i < len; i++) {
@@ -24,8 +24,8 @@ void solve(int level, int begin, int len) {
             // p为0意味着'['和']'成对出现，即能跨越一个（或多个）完整的子树
             if (p == 0 && s[i] == ',') {
                 // 逗号分开了左右子树，分别递归
-                solve(level + 1, begin + 1, i - 1);
-                solve(level + 1, i + 1, len - 1);
+                dfs(level + 1, begin + 1, i - 1);
+                dfs(level + 1, i + 1, len - 1);
             }
         }
     } else {
@@ -51,7 +51,7 @@ int main() {
         values.clear();
         leaf_num = 0;
         max_value = 0;
-        solve(0, 0, (int) s.size() - 1);
+        dfs(0, 0, (int) s.size() - 1);
         cout << leaf_num - max_value << endl;
     }
     return 0;

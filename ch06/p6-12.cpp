@@ -16,6 +16,7 @@ int die[6 + 1][6 + 1];
 int vis[maxn][maxn][6 + 1][6 + 1];
 int sx, sy, u, f;
 int maze[maxn][maxn];
+
 int dr[] = {-1, 1, 0, 0};
 int dc[] = {0, 0, -1, 1};
 

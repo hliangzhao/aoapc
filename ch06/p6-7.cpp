@@ -21,7 +21,7 @@ struct Transition {
 vector<Transition> transitions;
 int tokens[maxn];
 
-// 下面给出了将一个数组排序后保存原元素index的方法
+// TODO: 下面给出了将一个数组排序后保存原元素index的方法
 struct element {
     int data;
     size_t idx;
